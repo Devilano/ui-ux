@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload, faCheck, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import '../style/sell.css';
 import { createProgressApi } from '../apis/Api';
 
 function Sell() {
-  // useState hooks for input fields
   const [propertyName, setPropertyName] = useState('');
   const [location, setLocation] = useState('');
   const [city, setCity] = useState('');
@@ -24,7 +25,6 @@ function Sell() {
     setRooms(prevRooms => (prevRooms > 1 ? prevRooms - 1 : 1));
   };
 
-  // Event handlers for input changes
   const changePropertyName = (e) => setPropertyName(e.target.value);
   const changeLocation = (e) => setLocation(e.target.value);
   const changeCity = (e) => setCity(e.target.value);
@@ -33,14 +33,12 @@ function Sell() {
   const changeWhatFor = (e) => setWhatFor(e.target.value);
   const changeContact = (e) => setContact(e.target.value);
 
-  // Function for image upload
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     setNewsImage(file);
     setPreviewImage(URL.createObjectURL(file));
   };
 
-  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -54,7 +52,6 @@ function Sell() {
     formData.append('rooms', rooms);
     formData.append('newsImage', newsImage);
 
-    // API call
     createProgressApi(formData)
       .then((res) => {
         if (res.data.success === false) {
@@ -76,7 +73,10 @@ function Sell() {
         <div className="form-left">
           <div className="photo-upload">
             <input type="file" onChange={handleImageUpload} />
-            {previewImage && <img className='img-fluid rounded object-fit-fit' src={previewImage} alt='newsImage' height={50} width={50} />}
+            <label>
+              <FontAwesomeIcon icon={faUpload} />
+              {previewImage && <img className='img-fluid rounded object-fit-fit' src={previewImage} alt='newsImage' height={50} width={50} />}
+            </label>
           </div>
           <input type="text" value={propertyName} onChange={changePropertyName} className='form-control mb-2' placeholder='Property Name' />
           <input type="text" value={location} onChange={changeLocation} className='form-control mb-2' placeholder='Location' />
@@ -95,13 +95,19 @@ function Sell() {
           <div className="rooms">
             <label>Rooms: </label>
             <div className="room-controls">
-              <button type="button" onClick={handleIncrement}>▲</button>
+              <button type="button" onClick={handleIncrement}>
+                <FontAwesomeIcon icon={faArrowUp} />
+              </button>
               <span>{rooms}</span>
-              <button type="button" onClick={handleDecrement}>▼</button>
+              <button type="button" onClick={handleDecrement}>
+                <FontAwesomeIcon icon={faArrowDown} />
+              </button>
             </div>
           </div>
         </div>
-        <button type="submit" className="submit-button">Submit Details</button>
+        <button type="submit" className="submit-button">
+          <FontAwesomeIcon icon={faCheck} /> Submit Details
+        </button>
       </form>
     </div>
   );

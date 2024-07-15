@@ -1,0 +1,68 @@
+.dashboard-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    background-color: #072b5a;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .custom-btn {
+    background-color: #072b5a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .custom-btn:hover {
+    background-color: #06508d;
+  }
+  
+  .modal-content {
+    border-radius: 8px;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .form-group input, .form-group select, .form-group textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .btn-close {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #000;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  

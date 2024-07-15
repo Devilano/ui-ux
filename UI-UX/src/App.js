@@ -20,7 +20,6 @@ import Ranking from './pages/Ranking';
 import ProgressPage from './pages/ProgressPage';
 import VoteList from './pages/admin/VoteDashboard';
 import AdminCreateProgress from './pages/admin/AdminCreateProgress';
-import AnalysisBoard from './pages/AnalysisBoard';
 import Forgetpassword from './pages/ForgetPassword';
 import Typess from './pages/Types';
 import City from './pages/city';
@@ -28,6 +27,7 @@ import Sell from './pages/Sell';
 import RealEstate from './pages/RealState';
 import Forsale from './pages/Forsale';
 import Forrent from './pages/Forrent';
+import MyActivity from './pages/MyActivity';
  
 function App() {
   return (
@@ -40,28 +40,28 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path ='/forgetPassword' element={<Forgetpassword/>}/>
-      <Route path='/adminP' element={<AdminPropertyDashboard/>}/>
+      <Route path='/progressAD' element={<AdminCreateProgress/>}/>
+
 
       
 
         {/* Admin Route */}
         <Route element ={<AdminRoute/>}>
-
-
-        <Route path='/progressAD' element={<AdminCreateProgress/>}/>
+        <Route path ="/voteList" element={<VoteList/>}/>
+        <Route path='/adminP' element={<AdminPropertyDashboard/>}/>
         {/* <Route path ='/dashboard' element ={<Dashboard/>}/> */}
         </Route>
 
 {/* User ROute */}
         <Route element ={<UserRoute/>}>
-        <Route path ="/voteList" element={<VoteList/>}/>
 
         
         <Route path='/profile' element={<ProfileCard/>}></Route>
         <Route path ='/ranking' element={<Ranking/>}/>
+        <Route path ='/activity' element={<MyActivity/>}/>
+
         <Route path ='/progress' element={<ProgressPage/>}/>
         <Route path ="/profile" element ={<ProfileCard/>}></Route>
-        <Route path ="/analysis" element ={<AnalysisBoard/>}></Route>
         <Route path='/home' element={<Homepage/>}/>
         <Route path ='/types' element={<Typess/>}/>
         <Route path ='/sell' element={<Sell/>}/>

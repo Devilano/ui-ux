@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import RealEastate from './RealState';
 import '../style/homepage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -69,7 +71,7 @@ const Homepage = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button>Search</button>
+            <button style={{ backgroundColor: '#072b5a' }}>Search</button>
           </div>
         </div>
       </header>
@@ -86,12 +88,13 @@ const Homepage = () => {
               <p>{item.location} | {item.city}</p>
               <h3>{item.price} | {item.type}</h3>
             </div>
-            <button onClick={() => handleVote(item._id)}>Request</button>
+            <button className="show-more" style={{ backgroundColor: '#e0ac1c' }}onClick={() => handleVote(item._id)}>Request</button>
           </div>
         ))}
       </section>
-      <button className="show-more">Show more</button>
-      <section className="categories">
+      <button className="show-more" style={{ backgroundColor: '#072b5a' }}onClick={() => handleNavigation('/city')}>
+      <FontAwesomeIcon icon={faArrowRight} />
+    </button>      <section className="categories">
         <h2>Properties for rent & buy</h2>
         <div className="category-list">
           <div className="city-card" onClick={() => handleNavigation('/types')}>

@@ -3,12 +3,17 @@ import { getAllPropertyApi, createVoteApi } from '../apis/Api';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import '../style/homepage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 const Typess = () => {
   const navigate = useNavigate();
   const [properties, setProperties] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
   useEffect(() => {
     getAllPropertyApi().then((res) => {
       console.log(res.data);
@@ -145,8 +150,9 @@ const Typess = () => {
       </main>
 
       <footer>
-        <button className="show-more">Show more</button>
-      </footer>
+      <button className="show-more" onClick={() => handleNavigation('/city')}>
+      <FontAwesomeIcon icon={faArrowRight} />
+    </button>      </footer>
     </div>
   );
 };

@@ -31,7 +31,7 @@ const Login = () => {
       
       // Redirect to appropriate page based on admin status
       if (isAdmin) {
-        navigate('/dashboard');
+        navigate('/adminP');
       } else {
         navigate('/home');
       }

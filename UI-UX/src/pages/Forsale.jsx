@@ -3,6 +3,9 @@ import { getAllPropertyApi, createVoteApi } from '../apis/Api';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import '../style/homepage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 const Forsale = () => {
   const navigate = useNavigate();

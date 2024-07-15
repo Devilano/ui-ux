@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getVoteApi } from '../apis/Api';
 import "../style/profile.css"; // Make sure to create this CSS file
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt, faCamera, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Profilecard = () => {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const [showApprovalPopup, setShowApprovalPopup] = useState(false);
   const [userData, setUserData] = useState(null); // Initialize userData state
+  const [votes, setVotes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data from localStorage when component mounts
@@ -14,6 +20,24 @@ const Profilecard = () => {
       setUserData(JSON.parse(storedUserData));
     }
   }, []); // Empty dependency array ensures this effect runs only once on component mount
+
+  useEffect(() => {
+    if (userData) {
+      getVoteApi()
+        .then((res) => {
+          console.log('Response data:', res.data); // Log the response data to inspect its structure
+          if (res.data && res.data.votes && Array.isArray(res.data.votes)) {
+            const userVotes = res.data.votes.filter(vote => vote.by._id === userData._id);
+            setVotes(userVotes);
+          } else {
+            console.error('Invalid response data format:', res.data);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching vote data:', error);
+        });
+    }
+  }, [userData]);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -28,6 +52,10 @@ const Profilecard = () => {
     setShowApprovalPopup(true);
   };
 
+  const handleRecentActivityClick = () => {
+    navigate('/activity');
+  };
+
   return (
     <section className="profile-section">
       <div className="container py-5 h-100">
@@ -38,7 +66,7 @@ const Profilecard = () => {
                 {userData && ( // Check if userData exists before rendering
                   <React.Fragment>
                     <div className="col-md-12 text-center text-white profile-header">
-                      <h1>My Profile</h1>
+                      <h1 style={{color:"white", backgroundColor:"#072b5a"}}>My Profile</h1>
                     </div>
                     <div className="col-md-12 text-center text-white">
                       <div className="profile-image-container">
@@ -46,22 +74,37 @@ const Profilecard = () => {
                           alt="Profile"
                           className="profile-image" />
                         <div className="edit-icon">
-                          <i className="fas fa-camera"></i>
+                          <FontAwesomeIcon icon={faCamera} />
                         </div>
                       </div>
                       <h2 className="profile-name">{userData.firstName} {userData.lastName}</h2>
                       <p className="profile-phone">{userData.email}</p>
                       <p className="profile-location">
-                        <i className="fas fa-map-marker-alt"></i> {userData.address}
+                        <FontAwesomeIcon icon={faMapMarkerAlt} /> {userData.address}
                       </p>
                       <div className="profile-buttons">
-                        <button className="btn btn-primary me-3" onClick={() => setShowLogoutPopup(true)}>Logout</button>
-                        <button className="btn btn-secondary" onClick={handleEditProfile}>Edit Profile</button>
+                        <button className="btn btn-primary me-3"style={{color:"white", backgroundColor:"#072b5a"}} onClick={() => setShowLogoutPopup(true)}>
+                          <FontAwesomeIcon icon={faSignOutAlt} />
+                        </button>
+                        <button className="btn btn-secondary"  style={{color:"white", backgroundColor:"#072b5a"}}onClick={handleEditProfile}>Edit Profile</button>
                       </div>
-                      <h3 className="recent-activity-header">Recent activity</h3>
+                      <h3 className="recent-activity-header">
+                        <button className="btn  text-white"style={{color:"white", backgroundColor:"#e0ac1c"}} onClick={handleRecentActivityClick}>
+                          Recent activity
+                        </button>
+                      </h3>
                       <div className="recent-activity-container">
-                        <img className="activity-image" src="assets/house3.jpeg" alt="Activity 1" />
-                        <img className="activity-image" src="assets/house4.jpg" alt="Activity 2" />
+                        {votes.map((vote) => (
+                          <div key={vote._id}>
+                            {vote.to && vote.to.personImageUrl && (
+                              <img
+                                src={vote.to.personImageUrl}
+                                alt="Voted Property"
+                                style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                              />
+                            )}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </React.Fragment>

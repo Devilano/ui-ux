@@ -23,14 +23,20 @@ const Navbar = () => {
   return (
     <nav className="navbar-container">
       <div className="navbar-left">
-        <img src="assets/logo1.png" alt="Ghar Jagga" className="navbar-logo" />
+        <img 
+          src="assets/logo1.png" 
+          alt="Ghar Jagga" 
+          className="navbar-logo" 
+          onClick={() => handleNavigation('/home')} 
+          style={{ cursor: 'pointer' }}
+        />
       </div>
       <div className="navbar-center">
         <ul className="navbar-menu">
           <li className="navbar-item" onClick={() => handleNavigation('/home')}>Home</li>
           <li className="navbar-item" onClick={() => handleNavigation('/forsale')}>For Sell</li>
           <li className="navbar-item" onClick={() => handleNavigation('/forrent')}>For Rent</li>
-          <li className="navbar-item" onClick={() => handleNavigation('/home')}>Suscribe</li>
+          <li className="navbar-item" onClick={() => handleNavigation('/home')}>Subscribe</li>
         </ul>
       </div>
       <div className="navbar-right">
