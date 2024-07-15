@@ -1,0 +1,56 @@
+/* ranking.css */
+
+
+
+.card {
+  background-color: #d7e5f2; /* Light gray background color for cards */
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 10px 18px rgba(10, 199, 67, 0.1);
+  transition: transform 0.3s ease; /* Animated floating effect on hover */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Move the card up on hover */
+}
+
+.ranking {
+  background-color: #007bff; /* Blue background color for ranking numbers */
+  color: #fff; /* White text color for ranking numbers */
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  border-radius: 50%; /* Make the ranking number circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.image-container {
+  width: 80px; /* Adjust the width as needed */
+  height: 80px; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%; /* Make the image fill its container */
+  height: 100%; /* Make the image fill its container */
+}
+
+.party-name {
+  color: #007bff; /* Blue color for party names */
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.position {
+  margin-bottom: 0; /* Remove bottom margin for position */
+  color: #2eb527; /* Blue color for party names */
+  font-weight: bold;
+
+  margin-left: 20px;
+
+}
+
+

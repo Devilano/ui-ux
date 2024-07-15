@@ -1,0 +1,55 @@
+.property-details {
+    text-align: left;
+    padding: 20px;
+  }
+  
+  .property-details img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .property-details .property-images {
+    display: flex;
+    overflow-x: scroll;
+  }
+  
+  .property-details .property-images img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  
+  .property-description {
+    margin-top: 20px;
+  }
+  
+  .contact-us, .brief-characteristics {
+    margin-top: 20px;
+  }
+  
+  .contact-us input, .contact-us textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .contact-us button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contact-us button:hover {
+    background-color: #0056b3;
+  }
+  
+  .brief-characteristics p {
+    margin: 5px 0;
+  }
+  

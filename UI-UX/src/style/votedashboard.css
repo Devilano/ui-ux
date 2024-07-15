@@ -1,0 +1,24 @@
+/* CSS for VoteList component */
+.vote-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vote-table th,
+.vote-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.vote-table th {
+    background-color: #f2f2f2;
+}
+
+.vote-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.vote-table tbody tr:hover {
+    background-color: #ddd;
+}

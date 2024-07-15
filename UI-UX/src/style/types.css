@@ -1,0 +1,84 @@
+.App {
+    text-align: center;
+  }
+  
+  .header {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  .search-bar {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .search-bar button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-left: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .property-section {
+    padding: 20px;
+  }
+  
+  .property-section h2 {
+    text-align: left;
+    margin-left: 20px;
+  }
+  
+  .property-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .property-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 10px;
+    text-align: left;
+    overflow: hidden;
+  }
+  
+  .property-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .property-info {
+    padding: 10px;
+  }
+  
+  .property-info h3 {
+    margin: 10px 0;
+  }
+  
+  .property-info p {
+    margin: 5px 0;
+  }
+  
+  .show-more {
+    margin: 20px;
+    padding: 10px 20px;
+  }
+  
